@@ -637,14 +637,13 @@ static void rcu_eqs_enter_common(long long oldval, bool user)
 	struct rcu_data *rdp;
 	struct rcu_dynticks *rdtp = this_cpu_ptr(&rcu_dynticks);
 
-/*	trace_rcu_dyntick(TPS("Start"), oldval, rdtp->dynticks_nesting);*/
+//	trace_rcu_dyntick(TPS("Start"), oldval, rdtp->dynticks_nesting);
 	if (IS_ENABLED(CONFIG_RCU_EQS_DEBUG) &&
 	    !user && !is_idle_task(current)) {
 		struct task_struct *idle __maybe_unused =
 			idle_task(smp_processor_id());
 
-
-/*		trace_rcu_dyntick(TPS("Error on entry: not idle task"), oldval, 0);*/
+//		trace_rcu_dyntick(TPS("Error on entry: not idle task"), oldval, 0);
 		ftrace_dump(DUMP_ORIG);
 		WARN_ONCE(1, "Current pid: %d comm: %s / Idle pid: %d comm: %s",
 			  current->pid, current->comm,
@@ -2134,7 +2133,7 @@ static int __noreturn rcu_gp_kthread(void *arg)
 				rsp->jiffies_force_qs = jiffies + j;
 //			trace_rcu_grace_period(rsp->name,
 //					       READ_ONCE(rsp->gpnum),
-//					       TPS("5"));
+//					       TPS("fqswait"));
 			rsp->gp_state = RCU_GP_WAIT_FQS;
 			ret = wait_event_interruptible_timeout(rsp->gp_wq,
 					rcu_gp_fqs_check_wake(rsp, &gf), j);
