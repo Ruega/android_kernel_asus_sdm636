@@ -658,6 +658,9 @@ KBUILD_CFLAGS	+= $(call cc-option,-ffunction-sections,)
 KBUILD_CFLAGS	+= $(call cc-option,-fdata-sections,)
 endif
 
+## hide "error: cast to smaller integer type 'eSapStatus' from 'void *' "
+KBUILD_CFLAGS	+= $(call cc-disable-warning, pointer-to-int-cast)
+
 ## hide "warning: integer-overflow in expression"
 KBUILD_CFLAGS	+= $(call cc-disable-warning, integer-overflow)
 
