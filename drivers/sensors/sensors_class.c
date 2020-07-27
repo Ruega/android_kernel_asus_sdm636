@@ -227,32 +227,30 @@ static ssize_t sensors_enable_show(struct device *dev,
 }
 
 static ssize_t sensors_delay_store(struct device *dev,
-                                   struct device_attribute *attr, const char *buf, size_t size)
+		struct device_attribute *attr, const char *buf, size_t size)
 {
-        struct sensors_classdev *sensors_cdev = dev_get_drvdata(dev);
-        ssize_t ret = -EINVAL;
-        unsigned long data = 0;
+	struct sensors_classdev *sensors_cdev = dev_get_drvdata(dev);
+	ssize_t ret = -EINVAL;
+	unsigned long data = 0;
 
-        ret = kstrtoul(buf, 10, &data);
-        if (ret)
-                return ret;
-        /* The data unit is millisecond, the min_delay unit is microseconds. */
-        if ((data * 1000) < sensors_cdev->min_delay)
-        {
-                dev_err(dev, "Invalid value of delay, delay=%ld\n", data);
-                return -EINVAL;
-        }
-        if (sensors_cdev->sensors_poll_delay == NULL)
-        {
-                dev_err(dev, "Invalid sensor class delay handle\n");
-                return -EINVAL;
-        }
-        ret = sensors_cdev->sensors_poll_delay(sensors_cdev, data);
-        if (ret)
-                return ret;
+	ret = kstrtoul(buf, 10, &data);
+	if (ret)
+		return ret;
+	/* The data unit is millisecond, the min_delay unit is microseconds. */
+	if ((data * 1000) < sensors_cdev->min_delay) {
+		dev_err(dev, "Invalid value of delay, delay=%ld\n", data);
+		return -EINVAL;
+	}
+	if (sensors_cdev->sensors_poll_delay == NULL) {
+		dev_dbg(dev, "Invalid sensor class delay handle\n");
+		return -EINVAL;
+	}
+	ret = sensors_cdev->sensors_poll_delay(sensors_cdev, data);
+	if (ret)
+		return ret;
 
-        sensors_cdev->delay_msec = data;
-        return size;
+	sensors_cdev->delay_msec = data;
+	return size;
 }
 
 static ssize_t sensors_delay_show(struct device *dev,
