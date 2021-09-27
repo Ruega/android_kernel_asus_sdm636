@@ -85,7 +85,7 @@ config BFQ_GROUP_IOSCHED
 	(cgroups-v1) or io (cgroups-v2) controller.
 
 config IOSCHED_SWITCHER
-	bool "Use Noop while the screen is off"
+	bool "Use BFQ while the screen is off"
 	depends on IOSCHED_BFQ
 	---help---
 	  This enables a driver that switches the I/O scheduler for a single
