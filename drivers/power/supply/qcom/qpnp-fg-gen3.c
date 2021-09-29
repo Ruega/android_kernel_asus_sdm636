@@ -3338,8 +3338,8 @@ static int fg_get_time_to_full_locked(struct fg_chip *chip, int *val)
 #endif
 	/* clamp ibatt_avg to iterm */
 	if ((msoc > 70) && (msoc <= 90)) {
-		if (ibatt_avg < 1000)
-			ibatt_avg = 1000; /* force consistent minumum charging current 1000mA upto 90% battery */
+		if (ibatt_avg < 1800)
+			ibatt_avg = 1800; /* force consistent minimum charging current 1800mA upto 90% battery */
 	} else {
 		if (ibatt_avg < abs(chip->dt.sys_term_curr_ma))
 			ibatt_avg = abs(chip->dt.sys_term_curr_ma);
