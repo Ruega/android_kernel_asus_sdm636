@@ -3846,7 +3846,7 @@ void asus_chg_flow_work(struct work_struct *work)
 			pr_debug("%s: Couldn't read fast_CURRENT_LIMIT_CFG_REG\n",
 				__func__);
 
-		set_icl = ICL_500mA;
+		set_icl = ICL_1500mA;
 
 		rc = smblib_masked_write(smbchg_dev,
 						USBIN_CURRENT_LIMIT_CFG_REG,
@@ -4441,10 +4441,10 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 			}
 		}
 
-		/* Force 1500mA FCC on removal */
+		/* Force 2000mA FCC on removal */
 		if (chg->fcc_stepper_mode)
 			vote(chg->fcc_votable, FCC_STEPPER_VOTER,
-						true, 1500000);
+						true, 2000000);
 
 		rc = smblib_request_dpdm(chg, false);
 		if (rc < 0)
