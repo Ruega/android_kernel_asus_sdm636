@@ -1073,7 +1073,7 @@ override_suspend_config:
 		else if (chg->real_charger_type == POWER_SUPPLY_TYPE_USB_DCP
 			&& icl_ua == 2000000)
 			/*
-			 * For std cable with type = CDP override only if
+			 * For std cable with type = DCP override only if
 			 * current is not 2000mA
 			 */
 			override = true;
