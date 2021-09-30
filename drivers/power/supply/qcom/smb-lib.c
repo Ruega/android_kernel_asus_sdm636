@@ -3409,8 +3409,6 @@ void asus_batt_RTC_work(struct work_struct *dat)
 	spin_unlock_irqrestore(&bat_alarm_slock, batflags);
 }
 
-#define ICL_475mA	0x12
-#define ICL_500mA	0x13
 #define ICL_950mA	0x26
 #define ICL_1000mA	0x28
 #define ICL_1425mA	0x39
