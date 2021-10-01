@@ -3481,7 +3481,7 @@ static int SW_recharge(struct smb_charger *chg)
 	pr_debug("%s: bat_capacity = %d, termination_reg = 0x%x\n", __func__,
 			capacity, termination_reg);
 
-	if (capacity <= 98 && termination_done) {
+	if (capacity <= 100 && termination_done) {
 		pr_info("will start SW_recharge\n");
 
 		/* reg=1042, CHARGING_ENABLE_CMD
@@ -4441,10 +4441,10 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 			}
 		}
 
-		/* Force 2000mA FCC on removal */
+		/* Force 1500mA FCC on removal */
 		if (chg->fcc_stepper_mode)
 			vote(chg->fcc_votable, FCC_STEPPER_VOTER,
-						true, 2000000);
+						true, 1500000);
 
 		rc = smblib_request_dpdm(chg, false);
 		if (rc < 0)
