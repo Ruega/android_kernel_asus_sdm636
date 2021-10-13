@@ -9,8 +9,6 @@ on property:sys.boot_completed=1
     setprop spectrum.support 1
 	# Enable Force Fast Charge Feature by default
 	write /sys/kernel/fast_charge/force_fast_charge 1
-   # Set Default GPU PowerLevel
-   write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
 	# Set Display Resolution
     setprop sys.display-size 3840x2160
     # chmod
@@ -34,8 +32,6 @@ on property:sys.post_boot.parsed=1
     chown system system /sys/devices/system/cpu/cpufreq/policy4/*
     chown system system /sys/block/mmcblk0/queue/*
     setprop vendor.post_boot.parsed 1
-   # Set Default GPU PowerLevel
-   write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
 
 on property:vendor.post_boot.parsed=1
     # set all stune boost
@@ -46,8 +42,6 @@ on property:vendor.post_boot.parsed=1
     write /dev/stune/top-app/schedtune.boost 0
 	# Enable Force Fast Charge Feature by default
 	write /sys/kernel/fast_charge/force_fast_charge 1
-   # Set Default GPU PowerLevel
-   write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
 	# Set Display Resolution
     setprop sys.display-size 3840x2160
     # for set mode spectrum
@@ -108,6 +102,7 @@ on property:persist.spectrum.profile=2
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 160000000
     write /sys/class/kgsl/kgsl-3d0/max_clock_mhz 370
     write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 160
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "simple_ondemand"
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
     write /sys/class/kgsl/kgsl-3d0/throttling 1
@@ -188,6 +183,7 @@ on property:persist.spectrum.profile=0
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 160000000
     write /sys/class/kgsl/kgsl-3d0/max_clock_mhz 585
     write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 160
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
     write /sys/class/kgsl/kgsl-3d0/throttling 1
@@ -273,6 +269,7 @@ on property:persist.spectrum.profile=3
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 160000000
     write /sys/class/kgsl/kgsl-3d0/max_clock_mhz 585
     write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 160
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 2
     write /sys/class/kgsl/kgsl-3d0/throttling 0
@@ -333,6 +330,7 @@ on property:persist.spectrum.profile=1
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 160000000
     write /sys/class/kgsl/kgsl-3d0/max_clock_mhz 585
     write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 160
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "performance"
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
     write /sys/class/kgsl/kgsl-3d0/throttling 0
