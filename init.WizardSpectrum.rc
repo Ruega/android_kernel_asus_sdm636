@@ -159,7 +159,7 @@ on property:persist.spectrum.profile=2
     write /proc/sys/kernel/sched_enable_thread_grouping 1
     ## Little gov
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "DarknessV5"
     ## Little min freq
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 633600
@@ -175,7 +175,7 @@ on property:persist.spectrum.profile=2
 
     ## Big gov
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "DarknessV5"
     ## Big min freq
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
     write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 1113600
